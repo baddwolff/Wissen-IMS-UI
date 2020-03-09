@@ -1,0 +1,35 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h3 class="h4 mb text-gray-800">Notifications</h3>
+</div>
+<div class="row" *ngFor="let notif of notifs">
+  <div class="col mb-4" >
+
+    <div *ngIf="notif.type=='1'" class="card shadow mb-4 bg-warning" [routerLink]="['/home/product/view/',notif.id]">
+      <div class="card-header py-3 bg-warning" >
+        <h6 class="m-0 font-weight-bold text-white">Product Alert!</h6>
+      </div>
+      <div class="card-body text-white">
+        <p>A new Product ({{notif.ownerName}}) is here with ProductID=[{{notif.id}}]</p>
+      </div>
+    </div>
+
+    <div  *ngIf="notif.type=='2'" class="card shadow mb-4 bg-danger" [routerLink]="['/home/sales/view/',notif.id]">
+      <div class="card-header py-3 bg-danger">
+        <h6 class="m-0 font-weight-bold text-white">Sale Alert!</h6>
+      </div>
+      <div class="card-body text-white">
+        <p>A new Sale has occurred with SalesID=[{{notif.id}}] by {{notif.ownerName}}</p>
+      </div>
+    </div>
+
+    <div  *ngIf="notif.type=='3'" class="card shadow mb-4 bg-info" [routerLink]="['/home/order/view/',notif.id]">
+      <div class="card-header py-3 bg-info">
+        <h6 class="m-0 font-weight-bold text-white">Order Alert!</h6>
+      </div>
+      <div class="card-body text-white">
+        <p>A new Order has been placed with OrderID=[{{notif.id}}] by {{notif.ownerName}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

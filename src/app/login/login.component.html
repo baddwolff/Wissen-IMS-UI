@@ -1,0 +1,25 @@
+
+
+<div class="card  col-md-5 shadow-lg" style="margin-left: 30% ;margin-top:100px" >
+  <div class="p-5" >
+    <div class="text-center">
+      <h1 class="h4 text-gray-900 mb-4">Login to continue...</h1>
+    </div>
+    <form class="user" #newLoginForm="ngForm" (ngSubmit)="login(newLoginForm.value);newLoginForm.reset()">
+      <div class="form-group">
+        <input type="text" (ngModel)="newLogin.username" required name="userName" class="form-control form-control-user"  placeholder="Username">
+        <br>
+        <input type="password" (ngModel)="newLogin.password" required name="password" class="form-control form-control-user"  placeholder="Password">
+        <br>
+        <button  type="submit"  [disabled]="newLoginForm.invalid"  class="btn btn-primary btn-user btn-block">
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+

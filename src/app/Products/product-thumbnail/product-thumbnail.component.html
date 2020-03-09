@@ -1,0 +1,42 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+          <span [routerLink]="['/home/product/view/',product.id]">
+            <h3 class="m-0 font-weight-bold text-primary">{{product.name}}</h3>
+            <div class="m-0 font-weight-bold text">By {{product.company}}</div>
+          </span>
+    <div class="my-2"></div>
+    <div *ngIf="isAdded">
+      <a (click)="toggleIsAdded();addProduct()" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-cart-plus"></i>
+                    </span>
+        <span class="text" style="color:white">Add to cart</span>
+      </a>
+    </div>
+
+    <div *ngIf="!isAdded">
+      <a (click)="toggleIsAdded();removeProduct()"  class="btn btn-danger btn-icon-split">
+              <span class="icon text-white-50">
+                <i class="fas fa-trash"></i>
+              </span>
+        <span class="text" style="color:white">Remove from cart</span>
+      </a>
+      <br>
+      <br>
+      <button (click)="decrementAmount()" class="btn btn-warning btn-circle "><i class="fas fa-minus"></i></button>
+      <span style="margin: 20px"> {{amount}} </span>
+      <button (click)="incrementAmount()" class="btn btn-success btn-circle "><i class="fas fa-plus"></i></button>
+    </div>
+
+  </div>
+  <div class="card-body">
+    <div class="m-0 font-weight-bold text">Price: {{product.price | currency:'₹'}}</div>
+    <div class="m-0 font-weight-bold text">Status: {{product.status}}</div>
+    <div class="m-0 font-weight-bold text">Amount: {{product.amount}}</div>
+    Description
+  </div>
+</div>
+
+
+
+

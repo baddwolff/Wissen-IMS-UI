@@ -1,0 +1,31 @@
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Search Results</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <input autofocus [(ngModel)]="searchTerm"  autocomplete="off" name="searchTerm" type="text" class="form-control bg-light small" placeholder="Search for Product" aria-label="Search" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+          </div>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#newOrderModal" type="submit">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
+        </div>
+        <br>
+        <hr>
+        <div *ngFor = "let item of products|filter:searchTerm" >
+          <div class="card shadow mb-4 bg-success">
+            <div class="card-header py-3 bg-success">
+              <h6 class="m-0 font-weight-bold text-white">{{item.company}} : {{item.name}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

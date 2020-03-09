@@ -1,0 +1,47 @@
+<div class="card  col-md-6 shadow-lg" style="margin-left: 25%" >
+  <div class="p-5" >
+    <div class="text-center">
+      <h1 class="h4 text-gray-900 mb-4">Add Product</h1>
+    </div>
+    <form  #newProductForm="ngForm" (ngSubmit)="addProduct(newProductForm.value)" autocomplete="off" novalidate>
+      <div class="form-group">
+        <div style="text-align: right">
+          <em *ngIf="newProductForm.controls.name?.invalid && (newProductForm.controls.name?.touched) "  class="text-danger">**Required</em>
+        </div>
+        <input type="text" (ngModel)="newProduct.name" name="name" required class="form-control form-control-user" placeholder="Product Name">
+      </div>
+      <div class="form-group">
+        <div style="text-align: right">
+          <em *ngIf="newProductForm.controls.company?.invalid && (newProductForm.controls.company?.touched)"  class="text-danger">**Required</em>
+        </div>
+        <input type="text" (ngModel)="newProduct.company" name="company" required class="form-control form-control-user" placeholder="Product Company">
+      </div>
+      <div class="form-group">
+        <div style="text-align: right">
+          <em *ngIf="!(newProductForm.value.price>0) && (newProductForm.controls.price?.touched)"  class="text-danger">**Invalid</em>
+          <em *ngIf="newProductForm.controls.price?.invalid && (newProductForm.controls.price?.touched) && (newProductForm.value.price>0)"  class="text-danger">**Required</em>
+        </div>
+        <input type="number" min="0"  (ngModel)="newProduct.price"  name="price" required class="form-control form-control-user" placeholder="Price">
+      </div>
+      <div class="form-group">
+        <div style="text-align: right">
+          <em *ngIf="!(newProductForm.value.amount>0) && (newProductForm.controls.amount?.touched)"  class="text-danger">**Invalid</em>
+          <em *ngIf="newProductForm.controls.amount?.invalid && (newProductForm.controls.amount?.touched) "  class="text-danger">**Required</em>
+        </div>
+        <input type="number" (ngModel)="newProduct.name"  min="1" name="amount" required class="form-control form-control-user" placeholder="Amount">
+      </div>
+      <div class="form-group row">
+        <button [disabled]="newProductForm.invalid || !(newProductForm.value.amount>0) || !(newProductForm.value.price>0)" type="submit" class="btn btn-primary btn-user btn-block">
+          Add Product
+        </button>
+        <button (click)="newProductForm.reset()" class="btn btn-danger btn-user btn-block">
+          cancel
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
